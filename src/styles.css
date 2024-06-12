@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: "Clarkson",Helvetica,sans-serif;
+}
+
+/* Main Menu */
+#main-menu {
+  background-color: black;
+  border: 10px solid black;
+  display: flex;
+}
+
+/* Menu List */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 100px;
+}
+
+/* Menu item */
+.menu-item > a {
+  color: white;
+  font-size: larger;
+  text-decoration: none;
+}
+
+/* Menu item mouse hover */
+.menu-item > a:hover {
+  color: lightblue;
+}
+
+.logo > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
