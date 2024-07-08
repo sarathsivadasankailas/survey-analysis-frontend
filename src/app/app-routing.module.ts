@@ -6,8 +6,8 @@ import { LearningsDashboardComponent } from './components/learnings-dashboard/le
 
 const routes: Routes = [
   { path: '',             component: HomePageComponent},
-  { path: 'techniques',   component: TechniquesDashboardComponent },
-  { path: 'learnings',    component: LearningsDashboardComponent}
+  { path: 'techniques-adopted',   component: TechniquesDashboardComponent },
+  { path: 'learning-methods',    component: LearningsDashboardComponent}
 ];
 
 @NgModule({

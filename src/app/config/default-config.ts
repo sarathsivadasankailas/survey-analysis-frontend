@@ -6,11 +6,15 @@ export const DefaultConfig = {
     },
     {
       "name": "Techniques Adopted",
-      "routerLink": "/techniques"
+      "routerLink": "/techniques-adopted"
     },
     {
       "name": "Learning Methods",
-      "routerLink": "/learnings"
+      "routerLink": "/learning-methods"
+    },
+    {
+      "name": "Exam Analysis",
+      "routerLink": "/exam-analysis"
     }
   ]
 }

@@ -1,1 +1,16 @@
-<p>learnings-dashboard works!</p>
+<div class="learning-method-caption">
+  <h1>Learning Methods</h1>
+</div>
+<div class="learning-methods-page">
+  <div class="learning-methods">
+    <div *ngFor="let semester of semesters">
+      <div class="semester-details">
+        <input type="checkbox" (change)="onSelectionChange(semester)">
+        <label>{{semester?.name}}-{{semester?.year}}-{{semester?.semester}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="learning-methods-chart">
+    <canvas id="learning_methods_graph"></canvas>
+  </div>
+</div>
