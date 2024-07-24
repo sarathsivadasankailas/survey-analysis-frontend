@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { jsPDF } from 'jspdf';
 import { BackendCommunicationService } from 'src/app/services/backend-communication.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LearningsDashboardComponent {
     labels:this.labels,
     datasets: [
       {
-        label: "Learning Methods",
+        label: "Select Semeters",
         data: this.data,
         backgroundColor: "rgba(0,0,255)",
         barThickness: 25
@@ -63,6 +64,17 @@ export class LearningsDashboardComponent {
       this.selectedsemesters.push(semester);
     }
     console.log(this.selectedsemesters);
+    let graphLabel = '';
+    this.selectedsemesters.forEach((semester:any) => {
+      graphLabel += " " + semester?.name + "-" + semester?.semester + "-" + semester?.year + ",";
+    });
+    if (graphLabel.charAt(graphLabel.length - 1) === ',') {
+      graphLabel = graphLabel.slice(0, graphLabel.lastIndexOf(','));
+    }
+    if (graphLabel.trim() === '') {
+      graphLabel = 'Select Semesters'
+    }
+    this.learningMethodsData.datasets[0].label = graphLabel;
     this.updateGraphData();
     this.chart.update();
   }
@@ -92,5 +104,24 @@ export class LearningsDashboardComponent {
         this.data[index] += totalScores;
       });
     });
+  }
+
+  downloadPDF() {
+    const canvas = document.getElementById('learning_methods_graph') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    // Save the current state
+    ctx.save();
+    // Set the canvas background color to white
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+    ctx.restore();
+
+    const pdf = new jsPDF('landscape');
+    pdf.setFontSize(16);
+    pdf.addImage(canvasImage, 'JPEG', 10, 15, 270, 140);
+    pdf.save('Learning Methods');
   }
 }

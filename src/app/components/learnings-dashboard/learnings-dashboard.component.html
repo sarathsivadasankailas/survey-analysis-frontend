@@ -1,12 +1,17 @@
 <div class="learning-method-caption">
-  <h1>Learning Methods</h1>
+  <div>
+    <h1>Learning Methods</h1>
+  </div>
+  <div class="download-graph">
+    <button (click)="downloadPDF()">Download</button>
+  </div>
 </div>
 <div class="learning-methods-page">
   <div class="learning-methods">
     <div *ngFor="let semester of semesters">
       <div class="semester-details">
         <input type="checkbox" (change)="onSelectionChange(semester)">
-        <label>{{semester?.name}}-{{semester?.year}}-{{semester?.semester}}</label>
+        <label>{{semester?.name}}-{{semester?.semester}}-{{semester?.year}}</label>
       </div>
     </div>
   </div>

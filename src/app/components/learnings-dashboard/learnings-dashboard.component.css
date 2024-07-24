@@ -1,5 +1,8 @@
 .learning-method-caption {
   padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .learning-methods-page {
@@ -9,6 +12,24 @@
   column-gap: 25px;
   width: 100vw;
   height: auto;
+}
+
+.download-graph {
+  padding-right: 25px;
+  padding-left: 10px;
+}
+
+.download-graph button {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 15px;
+  color: white;
+  background-color: black;
+}
+
+.download-graph button:hover {
+  color: black;
+  background-color: white;
 }
 
 .learning-methods {
