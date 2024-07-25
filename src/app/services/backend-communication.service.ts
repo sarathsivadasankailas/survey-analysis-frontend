@@ -20,4 +20,9 @@ export class BackendCommunicationService {
       })
     )
   }
+
+  createLearningMethods(requestBody: any) {
+    let api = this.hostName + '/api/learning-methods';
+    return this.http.post(api, requestBody);
+  }
 }
