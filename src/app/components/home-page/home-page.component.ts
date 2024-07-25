@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendCommunicationService } from 'src/app/services/backend-communication.service';
-import * as XLSX from 'xlsx';
+import { read, utils, WorkBook, WorkSheet } from 'xlsx';
 
 
 @Component({
@@ -75,7 +75,7 @@ export class HomePageComponent {
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       const bstr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+      const wb: WorkBook = read(bstr, { type: 'binary' });
 
       const wsname: string = wb.SheetNames[0];
       if (wsname === 'LearningMethods') {
@@ -97,7 +97,7 @@ export class HomePageComponent {
 
   readLearningMethods(wb: any) {
     const wsname: string = wb.SheetNames[0];
-    const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+    const ws: WorkSheet = wb.Sheets[wsname];
 
     let name = ws['A3'] ? ws['A3'].v : undefined;
     let semester = ws['B3'] ? ws['B3'].v : undefined;
@@ -108,18 +108,18 @@ export class HomePageComponent {
     console.log(ws);
     let str = ws['!ref'];
     if (str !== null && str !== undefined) {
-      const range = XLSX.utils.decode_range(str);
+      const range = utils.decode_range(str);
       for (let rowNum = 3; rowNum <= range.e.r; rowNum++) {
         // Read learning method Column E
         const learningMethodsCellAddr = { c: 4, r: rowNum };
-        const learningMethodsRef = XLSX.utils.encode_cell(learningMethodsCellAddr);
+        const learningMethodsRef = utils.encode_cell(learningMethodsCellAddr);
         const learningMethod = ws[learningMethodsRef] ? ws[learningMethodsRef].v : '';
 
         let scores: any = [];
         // Read Ratings
         for (let colNum = 5; colNum <=9; colNum++ ) {
           const ratingCellAddr = { c: colNum, r: rowNum };
-          const ratingCellRef = XLSX.utils.encode_cell(ratingCellAddr);
+          const ratingCellRef = utils.encode_cell(ratingCellAddr);
           const rating = ws[ratingCellRef] ? ws[ratingCellRef].v : '';
           scores.push(rating);
         }
