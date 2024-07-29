@@ -25,4 +25,9 @@ export class BackendCommunicationService {
     let api = this.hostName + '/api/learning-methods';
     return this.http.post(api, requestBody);
   }
+
+  deleteLearningsMethod(id:any) {
+    let api = `${this.hostName}/api/learning-methods/${id}`;
+    return this.http.delete(api);
+  }
 }

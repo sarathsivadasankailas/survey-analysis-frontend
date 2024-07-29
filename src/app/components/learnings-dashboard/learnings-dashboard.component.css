@@ -22,14 +22,15 @@
 .download-graph button {
   border: 1px solid black;
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 10px 20px;
   color: white;
   background-color: black;
+  cursor: pointer;
 }
 
 .download-graph button:hover {
-  color: black;
-  background-color: white;
+  font-weight: bolder;
+  background-color: #292929;
 }
 
 .learning-methods {

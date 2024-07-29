@@ -1,0 +1,61 @@
+.manage-caption {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choose-options {
+  padding: 10px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  border-bottom: 2px solid gray;
+  align-items: center;
+}
+
+.list-view-caption {
+  padding: 10px;
+}
+
+.list-container {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.list-view-item {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 250px 100px;
+  align-items: center;
+}
+
+.btn-delete {
+  border: 2px solid red;
+  color: red;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: red;
+  color: white;
+}
+
+.search-btn {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  font-weight: bolder;
+  background-color: #292929;
+}

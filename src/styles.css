@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Clarkson",Helvetica,sans-serif;
+  background-color: rgba(198, 226, 226, 0.2)
 }
 
 /* Main Menu */
@@ -37,3 +38,6 @@ nav ul {
   border-radius: 50%;
   border: 3px solid white;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

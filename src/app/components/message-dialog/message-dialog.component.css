@@ -1,0 +1,27 @@
+.dialog-container {
+  padding: 10px;
+  width: 300px;
+}
+
+.dialog-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+
+.ok-btn {
+  border: 2px solid blue;
+  color: blue;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ok-btn:hover {
+  background-color: blue;
+  color: white;
+}

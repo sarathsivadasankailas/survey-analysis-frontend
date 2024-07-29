@@ -1,0 +1,38 @@
+<app-login *ngIf="loggedIn==false" (loginEvent)="onLoginSuccess($event)"></app-login>
+<div *ngIf="loggedIn==true">
+  <div class="manage-caption">
+    <h1>Manage</h1>
+  </div>
+  <div class="choose-options">
+    <div>
+      <label><b>Select Option:</b></label>
+    </div>
+    <div>
+      <input type="radio" id="techniques-adopted" name="option" (click)="onSelectOption('techniques-adopted')">
+      <label for="techniques-adopted">Techniques Adopted</label>
+    </div>
+    <div>
+      <input type="radio" id="learning-methods" name="option" (click)="onSelectOption('learning-methods')">
+      <label for="learning-methods">Learning Methods</label>
+    </div>
+    <div>
+      <button (click)="onSearch()" class="search-btn">Search</button>
+    </div>
+  </div>
+  <div>
+    <div class="list-view-caption">
+      <h2>{{caption}}</h2>
+    </div>
+    <div>
+      <app-loading *ngIf="loading"></app-loading>
+    </div>
+    <div class="list-container">
+      <div *ngFor="let item of response;let i=index">
+        <div class="list-view-item">
+          <label>{{i+1}}.  {{item?.name}}-{{item?.semester}}-{{item?.year}}</label>
+          <button class="btn-delete" (click)="onDelete(item?._id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

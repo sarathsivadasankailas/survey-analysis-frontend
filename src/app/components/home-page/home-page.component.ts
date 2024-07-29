@@ -19,6 +19,7 @@ export class HomePageComponent {
   learningMethodsReq: any;
   enableUpload: boolean = false;
   uploadText: string = '';
+  disableUpload: boolean = false;
 
   ngOnInit() {
     let height = window.innerHeight;
@@ -58,6 +59,7 @@ export class HomePageComponent {
     if (target.files.length > 1)  {
       this.message = "Cannot select multiple files";
       this.error = true;
+      alert(this.message);
       return;
     }
     const file = target.files[0];
@@ -66,6 +68,7 @@ export class HomePageComponent {
     if (fileExtension !== 'xlsx') {
       this.message = 'Selected file is not an xlsx. Please select a valid xlsx file.';
       this.error = true;
+      alert(this.message);
       return;
     }
     this.readFile(file);
@@ -85,6 +88,7 @@ export class HomePageComponent {
       } else {
         this.message = 'Invalid xlsx file. Cannot find worksheets with names LearningMethods or TechnologiesAdopted';
         this.error = true;
+        alert(this.message);
         return;
       }
     };
@@ -146,8 +150,15 @@ export class HomePageComponent {
   }
 
   uploadLearningMethods() {
+    this.uploadText = "Uploading Data...";
+    this.disableUpload = true;
     if (this.learningMethodsReq !== null && this.learningMethodsReq !== undefined) {
-      this.backendSvc.createLearningMethods(this.learningMethodsReq).subscribe((response:any) => console.log(response));
+      this.backendSvc.createLearningMethods(this.learningMethodsReq).subscribe((response:any) => {
+        if (response?._id !== null) {
+          this.disableUpload = false;
+          alert("Successfully Uploaded the data");
+        }
+      });
     }
   }
 }

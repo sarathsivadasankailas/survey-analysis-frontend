@@ -13,12 +13,12 @@ export class DataProcessorService {
   getLearningMethods(data: any) {
     let classes: any[] = [];
     let learningMethodLabels: any[] = [];
-    let learningMethodValues = [];
     data.forEach((semester:any) => {
       let semesterName = {
         name: semester?.name,
         year: semester?.year,
-        semester: semester?.semester
+        semester: semester?.semester,
+        id: semester?._id
       }
       classes.push(semesterName);
       let methods = semester?.methods;

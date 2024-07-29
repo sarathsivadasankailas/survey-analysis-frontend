@@ -15,6 +15,7 @@ export class LearningsDashboardComponent {
   labels: string[] = [];
   data: any[] = [];
   responseData: any;
+  loading: boolean = false;
 
   learningMethodsData = {
     labels:this.labels,
@@ -32,11 +33,13 @@ export class LearningsDashboardComponent {
 
 
   ngOnInit() {
+    this.loading = true;
     this.initializeData();
   }
 
   initializeData() {
     this.backendSvc.getLearningMethods().subscribe(response => {
+        this.loading = false;
         console.log(response);
         this.semesters = response?.classes;
         this.learningMethodsData.labels = response?.labels;
