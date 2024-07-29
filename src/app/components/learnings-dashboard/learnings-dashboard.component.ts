@@ -126,5 +126,9 @@ export class LearningsDashboardComponent {
     pdf.setFontSize(16);
     pdf.addImage(canvasImage, 'JPEG', 10, 15, 270, 140);
     pdf.save('Learning Methods');
+
+    // Setting color back to the normal background
+    ctx.fillStyle = 'rgba(198, 226, 226, 0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 }
