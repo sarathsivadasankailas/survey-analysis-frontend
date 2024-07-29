@@ -9,8 +9,18 @@
 <div class="techniques-adopted-page">
   <div class="techniques-adopted">
     <div *ngFor="let semester of semesters">
-      <div class="semester-details">
-        <input type="checkbox" (change)="onSelectionChange(semester)">
+      <div class="semester-details" (click)="onSelectionChange(semester)">
+        <div *ngIf="isSelected(semester)===false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="grey" stroke-width="2" fill="none"/>
+          </svg>
+         </div>
+         <div *ngIf="isSelected(semester)===true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="green" stroke-width="2" fill="none"/>
+            <path d="M7 12.5L11 16.5L17 8" stroke="green" stroke-width="3" fill="none"/>
+          </svg>
+         </div>
         <label>{{semester?.name}}-{{semester?.semester}}-{{semester?.year}}</label>
       </div>
     </div>

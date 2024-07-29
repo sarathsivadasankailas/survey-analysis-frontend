@@ -81,6 +81,14 @@ export class TechniquesDashboardComponent {
     this.chart.update();
   }
 
+  isSelected(semester:any) {
+    if (this.selectedsemesters.includes(semester)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   updateGraphData() {
     let size = this.techniquesAdoptedData.labels.length;
     for (let i = 0; i < size; i++) {

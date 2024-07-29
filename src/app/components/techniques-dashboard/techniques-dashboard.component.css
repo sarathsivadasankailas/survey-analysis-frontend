@@ -47,6 +47,10 @@
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
 
 .semester-details:hover {
@@ -57,6 +61,7 @@
 .semester-details label {
   padding-left: 5px;
   vertical-align: center;
+  cursor: pointer;
 }
 
 .techniques-adopted-chart {

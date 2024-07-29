@@ -82,6 +82,14 @@ export class LearningsDashboardComponent {
     this.chart.update();
   }
 
+  isSelected(semester:any) {
+    if (this.selectedsemesters.includes(semester)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   updateGraphData() {
     let size = this.learningMethodsData.labels.length;
     for (let i = 0; i < size; i++) {
