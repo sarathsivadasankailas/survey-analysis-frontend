@@ -1,0 +1,65 @@
+.techniques-adopted-caption {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.techniques-adopted-page {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 25px;
+  width: 100vw;
+  height: auto;
+}
+
+.download-graph {
+  padding-right: 25px;
+  padding-left: 10px;
+}
+
+.download-graph button {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.download-graph button:hover {
+  font-weight: bolder;
+  background-color: #292929;
+}
+
+.techniques-adopted {
+  width: 15%;
+  padding-right: 25px;
+  padding-left: 10px;
+  border-right: 1px solid black;
+}
+
+.semester-details {
+  font-family: "Clarkson",Helvetica,sans-serif;
+  font-size: 12px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 7px;
+}
+
+.semester-details:hover {
+  border: 1px solid blue;
+  color: blue;
+}
+
+.semester-details label {
+  padding-left: 5px;
+  vertical-align: center;
+}
+
+.techniques-adopted-chart {
+  width: 75%;
+  height: 70vh;
+}

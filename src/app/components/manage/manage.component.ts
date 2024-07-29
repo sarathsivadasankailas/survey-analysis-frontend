@@ -49,7 +49,10 @@ export class ManageComponent {
   }
 
   loadTechniquesAdopted() {
-
+    this.backendSvc.getTechniquesAdopted().subscribe((response:any) => {
+      this.response = response?.responseData;
+      this.loading = false;
+    });
   }
 
   loadLearningMethods() {

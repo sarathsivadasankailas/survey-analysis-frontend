@@ -30,4 +30,22 @@ export class BackendCommunicationService {
     let api = `${this.hostName}/api/learning-methods/${id}`;
     return this.http.delete(api);
   }
+
+  getTechniquesAdopted() {
+    let api = this.hostName + '/api/technologies-adopted';
+    return this.http.get(api).pipe(
+      map(data => {
+        return this.dataProcessorSvc.getTechniquesAdopted(data);
+      })
+    )
+  }
+
+  createTechniquesAdopted(requestBody: any) {
+
+  }
+
+  deleteTechniquesAdopted(id:any) {
+    let api = `${this.hostName}/api/technologies-adopted/${id}`;
+    return this.http.delete(api);
+  }
 }
