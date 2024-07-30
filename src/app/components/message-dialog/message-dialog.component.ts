@@ -7,10 +7,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./message-dialog.component.css']
 })
 export class MessageDialogComponent {
+  type: any = 'msg';
 
   constructor(
     public dialogRef: MatDialogRef<MessageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
-
+  ) {
+    if (data?.type !== null && data?.type !== undefined) {
+      this.type = data?.type;
+    }
+  }
 }

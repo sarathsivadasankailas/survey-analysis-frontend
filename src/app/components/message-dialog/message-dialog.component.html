@@ -3,7 +3,7 @@
     <h1 mat-dialog-title>Message</h1>
   </div>
   <div mat-dialog-content>
-    <p>{{data.message}}</p>
+    <p [ngClass]="type">{{data.message}}</p>
   </div>
   <div mat-dialog-actions class="dialog-btns">
     <div>

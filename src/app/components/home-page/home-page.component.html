@@ -21,9 +21,12 @@
       <label id="fileName">{{fileName}}</label>
     </div>
   </div>
-  <div>
+  <div *ngIf="uploading===false">
     <div class="upload-btn">
       <button *ngIf="enableUpload" (click)="uploadFile()" class="btn" [disabled]="disableUpload">{{uploadText}}</button>
     </div>
+  </div>
+  <div *ngIf="uploading===true">
+    <app-loading text="Uploading File."></app-loading>
   </div>
 </div>

@@ -41,7 +41,8 @@ export class BackendCommunicationService {
   }
 
   createTechniquesAdopted(requestBody: any) {
-
+    let api = this.hostName + '/api/technologies-adopted';
+    return this.http.post(api, requestBody);
   }
 
   deleteTechniquesAdopted(id:any) {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-loading',
@@ -7,10 +7,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class LoadingComponent implements OnInit, OnDestroy {
 
-  loadingText = 'Loading.';
+  loadingText = '';
   private intervalId: any;
+  @Input() text : string = 'Loading.';
 
   ngOnInit(): void {
+    this.loadingText = this.text;
     this.startLoadingAnimation();
   }
 
@@ -26,7 +28,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
       } else {
         dots = '';
       }
-      this.loadingText = `Loading${dots}`;
+      this.loadingText = `${this.text}${dots}`;
     }, 500); // Change the text every 500ms
   }
 }

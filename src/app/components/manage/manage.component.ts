@@ -12,10 +12,11 @@ import { MessageDialogComponent } from '../message-dialog/message-dialog.compone
 export class ManageComponent {
 
   loggedIn: boolean = false;
-  selectedOption: any;
+  selectedOption: any; // Option selected to delete
   caption:any;
   response: any;
   loading: boolean = false;
+  selectedViewItem: any;
 
   constructor(private backendSvc: BackendCommunicationService, public dialog: MatDialog) {}
 
@@ -25,20 +26,28 @@ export class ManageComponent {
 
   onSelectOption(option: any) {
     this.selectedOption = option;
+    this.selectedViewItem = undefined;
+    this.response = undefined;
+    if (this.selectedOption === 'techniques-adopted') {
+      this.caption = 'Techniques Adopted';
+    } else if (this.selectedOption === 'learning-methods') {
+      this.caption = 'Learning Methods';
+    }
   }
 
   onSearch() {
+    this.selectedViewItem = undefined;
     this.response = undefined;
     if (this.selectedOption === null || this.selectedOption === undefined) {
       //alert('Choose an option');
       const dialogRef = this.dialog.open(MessageDialogComponent, {data: {message: 'Please select an option to proceed.'}});
       dialogRef.afterClosed();
     } else if (this.selectedOption === 'techniques-adopted') {
-      this.caption = 'Techniques Adopted';
+      //this.caption = 'Techniques Adopted';
       this.loading = true;
       this.loadTechniquesAdopted();
     } else if (this.selectedOption === 'learning-methods') {
-      this.caption = 'Learning Methods';
+      //this.caption = 'Learning Methods';
       this.loading = true;
       this.loadLearningMethods();
     } else {
@@ -69,6 +78,7 @@ export class ManageComponent {
         // User confirmed the action
         console.log('User confirmed the action');
         this.deleteItem(id);
+        this.selectedViewItem = undefined;
       } else {
         // User canceled the action
         console.log('User canceled the action');
@@ -79,7 +89,14 @@ export class ManageComponent {
   deleteItem(id:any) {
     console.log('Deleting item ', this.selectedOption, id);
     if (this.selectedOption == 'techniques-adopted') {
-
+      this.backendSvc.deleteTechniquesAdopted(id).subscribe((response:any) => {
+        if (response !== null && response?.msg !== null && response?.msg === 'Record deleted') {
+          this.loadTechniquesAdopted();
+        } else {
+          const dialogRef = this.dialog.open(MessageDialogComponent, {data: {message: 'Failed to delete item.'}});
+          dialogRef.afterClosed();
+        }
+      })
     } else if (this.selectedOption == 'learning-methods') {
       this.backendSvc.deleteLearningsMethod(id).subscribe((response:any) => {
         if (response !== null && response?.msg !== null && response?.msg === 'Record deleted') {
@@ -92,6 +109,14 @@ export class ManageComponent {
     } else {
 
     }
+  }
+
+  onView(id:any) {
+    let item = this.response.filter((data:any) => data._id === id);
+    if (item !== null && item !== undefined && item.length > 0) {
+      this.selectedViewItem = item[0];
+    }
+    console.log(this.selectedViewItem);
   }
 }
 

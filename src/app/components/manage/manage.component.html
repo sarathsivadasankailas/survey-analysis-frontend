@@ -26,11 +26,60 @@
     <div>
       <app-loading *ngIf="loading"></app-loading>
     </div>
-    <div class="list-container">
-      <div *ngFor="let item of response;let i=index">
-        <div class="list-view-item">
-          <label>{{i+1}}.  {{item?.name}}-{{item?.semester}}-{{item?.year}}</label>
-          <button class="btn-delete" (click)="onDelete(item?._id)">Delete</button>
+    <div class="list-details-container">
+      <div class="list-container">
+        <div *ngFor="let item of response;let i=index">
+          <div class="list-view-item">
+            <label (click)="onView(item?._id)" class="list-item">{{i+1}}.  {{item?.name}}-{{item?.semester}}-{{item?.year}}</label>
+            <button class="btn-delete" (click)="onDelete(item?._id)">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="details-container">
+        <div *ngIf="selectedViewItem !== null && selectedViewItem !== undefined && selectedOption === 'techniques-adopted'">
+          <h3>{{selectedViewItem.name}}-{{selectedViewItem.semester}}-{{selectedViewItem.year}}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Techniques Adopted</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let technique of selectedViewItem.techniques">
+                <td>{{technique.technique}}</td>
+                <td>{{technique.counts}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="selectedViewItem !== null && selectedViewItem !== undefined && selectedOption === 'learning-methods'">
+          <h3>{{selectedViewItem.name}}-{{selectedViewItem.semester}}-{{selectedViewItem.year}}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2">Learning Methods</th>
+                <th colspan="5">Rating</th>
+              </tr>
+              <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let method of selectedViewItem.methods">
+                <td>{{method.method}}</td>
+                <td>{{method.scores[0]}}</td>
+                <td>{{method.scores[1]}}</td>
+                <td>{{method.scores[2]}}</td>
+                <td>{{method.scores[3]}}</td>
+                <td>{{method.scores[4]}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
