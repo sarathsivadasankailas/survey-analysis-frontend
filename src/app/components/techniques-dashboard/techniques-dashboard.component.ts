@@ -59,7 +59,7 @@ export class TechniquesDashboardComponent {
             beginAtZero: true,
             ticks: {
               callback: (value, index, values) => {
-                return `${value} %`;
+                return `${value}%`;
               }
             }
           }
