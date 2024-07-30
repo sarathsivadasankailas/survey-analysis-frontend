@@ -53,7 +53,17 @@ export class TechniquesDashboardComponent {
       type: "bar",
       data: this.techniquesAdoptedData,
       options: {
-        indexAxis: 'y'
+        indexAxis: 'y',
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: {
+              callback: (value, index, values) => {
+                return `${value} %`;
+              }
+            }
+          }
+        }
       }
     });
   }
@@ -91,8 +101,10 @@ export class TechniquesDashboardComponent {
 
   updateGraphData() {
     let size = this.techniquesAdoptedData.labels.length;
+    let dataSum: any = [];
     for (let i = 0; i < size; i++) {
       this.data[i] = 0;
+      dataSum[i] = 0;
     }
     let semesterData:any = [];
     this.selectedsemesters.forEach((semester:any) => {
@@ -103,13 +115,18 @@ export class TechniquesDashboardComponent {
       );
       semesterData.push(res);
     });
+    let sum = 0;
     semesterData.forEach((item:any) => {
       item?.techniques.forEach((technique:any) => {
         let index = this.techniquesAdoptedData.labels.indexOf(technique?.technique);
         let count = technique?.counts;
-        this.data[index] += count;
+        sum += count;
+        dataSum[index] += count;
       });
     });
+    for(let i = 0; i < dataSum.length; i++) {
+      this.data[i] = (dataSum[i]/sum) * 100;
+    }
   }
 
   downloadPDF() {
