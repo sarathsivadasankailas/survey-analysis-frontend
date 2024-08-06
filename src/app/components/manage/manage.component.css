@@ -1,0 +1,99 @@
+.manage-caption {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choose-options {
+  padding: 10px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  border-bottom: 2px solid gray;
+  align-items: center;
+}
+
+.list-view-caption {
+  padding: 10px;
+}
+
+.list-details-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.list-container {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  /* border-right: 2px solid gray; */
+}
+
+.list-view-item {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 250px 100px;
+  align-items: center;
+}
+
+.list-item:hover {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.btn-delete {
+  border: 2px solid red;
+  color: red;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: red;
+  color: white;
+}
+
+.search-btn {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  font-weight: bolder;
+  background-color: #292929;
+}
+
+tr {
+  background-color: rgb(217, 238, 238);
+}
+
+thead tr {
+  background-color: rgb(9, 145, 145);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(198, 226, 226);
+}
+
+tbody tr:hover {
+  color: white;
+  background-color: rgb(104, 190, 190);
+}
+
+tbody tr:last-of-type td {
+  border-bottom: 4px solid rgb(9, 145, 145);
+}
+
+th, td {
+  padding: 10px;
+}

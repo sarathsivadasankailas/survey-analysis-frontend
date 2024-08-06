@@ -1,0 +1,42 @@
+.dialog-container {
+  padding: 10px;
+  width: 400px;
+}
+
+.dialog-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+
+.ok-btn {
+  border: 2px solid rgb(4, 145, 145);
+  color: black;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ok-btn:hover {
+  background-color: rgb(4, 145, 145);
+}
+
+.msg {
+  color: blue;
+}
+
+.error-msg {
+  color: red;
+}
+
+.warning-msg {
+  color: orange;
+}
+
+.success-msg {
+  color: green;
+}

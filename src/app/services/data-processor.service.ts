@@ -13,12 +13,12 @@ export class DataProcessorService {
   getLearningMethods(data: any) {
     let classes: any[] = [];
     let learningMethodLabels: any[] = [];
-    let learningMethodValues = [];
     data.forEach((semester:any) => {
       let semesterName = {
         name: semester?.name,
         year: semester?.year,
-        semester: semester?.semester
+        semester: semester?.semester,
+        id: semester?._id
       }
       classes.push(semesterName);
       let methods = semester?.methods;
@@ -35,6 +35,38 @@ export class DataProcessorService {
     let response = {
       classes: classes,
       labels: learningMethodLabels,
+      responseData: data
+    }
+
+    return response;
+  }
+
+  getTechniquesAdopted(data: any) {
+    let classes: any[] = [];
+    let techiniquesLabel: any[] = [];
+
+    data.forEach((semester:any) => {
+      let semesterName = {
+        name: semester?.name,
+        year: semester?.year,
+        semester: semester?.semester,
+        id: semester?._id
+      }
+      classes.push(semesterName);
+      let techniques = semester?.techniques;
+      if (techniques) {
+        techniques.forEach((technique:any) => {
+          let techniqueName = technique?.technique;
+          if (!techiniquesLabel.includes(techniqueName)) {
+            techiniquesLabel.push(techniqueName);
+          }
+        })
+      }
+    });
+
+    let response = {
+      classes: classes,
+      labels: techiniquesLabel,
       responseData: data
     }
 

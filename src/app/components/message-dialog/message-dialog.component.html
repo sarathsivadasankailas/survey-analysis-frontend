@@ -1,0 +1,14 @@
+<div class="dialog-container">
+  <div class="dialog-title">
+    <h1 mat-dialog-title>Message</h1>
+  </div>
+  <div mat-dialog-content>
+    <p [ngClass]="type">{{data.message}}</p>
+  </div>
+  <div mat-dialog-actions class="dialog-btns">
+    <div>
+      <button mat-button [mat-dialog-close]="true" class="ok-btn">Ok</button>
+    </div>
+  </div>
+</div>
+

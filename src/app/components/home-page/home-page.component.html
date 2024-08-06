@@ -2,14 +2,31 @@
   <div class="hero-text">
     <h1>Survey Analysis</h1>
   </div>
-  <!-- <div>
-    <input type="file" id="upload-file" name="Upload">
-  </div> -->
+  <div class="templates">
+    <div class="template-download">
+      <p>Template for Technologies Adopted</p>
+      <button class="link-btn" (click)="onDownloadTechnologiesAdopted()">Download</button>
+    </div>
+    <div class="template-download">
+      <p>Template for Learning Methods</p>
+      <button class="link-btn" (click)="onDownloadLearningMethods()">Download</button>
+    </div>
+  </div>
   <div class="file-selection-section">
     <div class="file-input-container">
-      <input type="file" id="fileInput" class="file-input"/>
+      <input type="file" id="fileInput" class="file-input" (change)="onFileSelect($event)" accept=".xlsx"/>
       <label for="fileInput" class="file-input-label">Select a file</label>
-      <label id="fileName" class="file-name">No file chosen</label>
     </div>
+    <div class="file-name">
+      <label id="fileName">{{fileName}}</label>
+    </div>
+  </div>
+  <div *ngIf="uploading===false">
+    <div class="upload-btn">
+      <button *ngIf="enableUpload" (click)="uploadFile()" class="btn" [disabled]="disableUpload">{{uploadText}}</button>
+    </div>
+  </div>
+  <div *ngIf="uploading===true">
+    <app-loading text="Uploading File."></app-loading>
   </div>
 </div>

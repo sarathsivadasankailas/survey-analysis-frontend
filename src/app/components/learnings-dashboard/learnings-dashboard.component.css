@@ -1,5 +1,8 @@
 .learning-method-caption {
   padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .learning-methods-page {
@@ -9,6 +12,25 @@
   column-gap: 25px;
   width: 100vw;
   height: auto;
+}
+
+.download-graph {
+  padding-right: 25px;
+  padding-left: 10px;
+}
+
+.download-graph button {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.download-graph button:hover {
+  font-weight: bolder;
+  background-color: #292929;
 }
 
 .learning-methods {
@@ -25,16 +47,22 @@
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
 
 .semester-details:hover {
-  border: 1px solid blue;
-  color: blue;
+  border: 1px solid green;
+  color: green;
+  font-weight: bold;
 }
 
 .semester-details label {
   padding-left: 5px;
   vertical-align: center;
+  cursor: pointer;
 }
 
 .learning-methods-chart {

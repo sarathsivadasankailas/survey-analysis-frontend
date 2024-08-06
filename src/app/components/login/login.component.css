@@ -1,0 +1,46 @@
+.login-page {
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  background-color: rgba(198, 226, 226)
+}
+
+.login-caption {
+  text-align: center;
+}
+
+.password {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 25px;
+}
+
+.login {
+  text-align: center;
+  padding: 25px;
+}
+
+.login-btn {
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  font-weight: bolder;
+  background-color: #292929;
+}
+
+.invalid-message {
+  text-align: center;
+  padding: 10px;
+  color: red;
+}

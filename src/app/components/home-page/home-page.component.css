@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   background-image: linear-gradient(rgba(198, 226, 226, 0.6), rgba(198, 226, 226, 0.6)), url('../../../assets/images/home.jpg');
-  /* background-image: url('../../../assets/images/home.jpg'); */
+  min-height: 750px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
@@ -12,7 +12,7 @@
 .hero-text {
   text-align: center;
   font-size: 200%;
-  padding: 100px;
+  padding: 75px;
 }
 
 .hero-text > h1 {
@@ -22,12 +22,6 @@
 .file-selection-section {
   text-align: center;
   align-items: center;
-}
-
-.file-input-container {
-  /* text-align: center;
-  display: grid;
-  align-items: center; */
 }
 
 .file-input {
@@ -52,5 +46,64 @@
 }
 
 .file-name {
-  margin-left: 10px;
+  padding-top: 25px;
+}
+
+.templates {
+  border: 2px dashed gray;
+  margin-left: calc(50vw - 450px);
+  margin-right: calc(50vw - 450px);
+  margin-bottom: 75px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 25px;
+}
+
+.template-download {
+  border: 1px solid black;
+  margin: 50px;
+  padding: 25px;
+  text-align: center;
+  border-radius: 25px;
+  background: linear-gradient(rgba(198, 226, 226, 0.6), rgba(198, 226, 226, 0.6));
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.link-btn:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.message {
+  width: 100%;
+  padding: 25px;
+  text-align: center;
+}
+
+.err-msg {
+  color: red;
+}
+
+.upload-btn {
+  text-align: center;
+  padding: 25px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #292929;
+  font-weight: bolder;
 }

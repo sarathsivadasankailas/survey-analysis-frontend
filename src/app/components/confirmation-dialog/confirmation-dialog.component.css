@@ -1,0 +1,43 @@
+.dialog-container {
+  padding: 10px;
+}
+
+.dialog-title {
+
+}
+
+.dialog-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.cancel-btn {
+  border: 2px solid red;
+  color: red;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.ok-btn {
+  border: 2px solid green;
+  color: green;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ok-btn:hover {
+  background-color: green;
+  color: white;
+}

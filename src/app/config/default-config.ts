@@ -13,8 +13,8 @@ export const DefaultConfig = {
       "routerLink": "/learning-methods"
     },
     {
-      "name": "Exam Analysis",
-      "routerLink": "/exam-analysis"
+      "name": "Manage",
+      "routerLink": "/manage"
     }
   ]
 }
