@@ -1,43 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: "Clarkson",Helvetica,sans-serif;
-  background-color: rgba(198, 226, 226, 0.2)
+  @apply h-screen w-screen  bg-[rgb(250,246,242)] dark:bg-[#111111];
 }
 
-/* Main Menu */
-#main-menu {
-  background-color: black;
-  border: 10px solid black;
-  display: flex;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-emerald-800 dark:text-emerald-600;
 }
 
-/* Menu List */
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  column-gap: 100px;
+p,
+a,
+label {
+  @apply dark:text-neutral-300 text-neutral-700;
 }
 
-/* Menu item */
-.menu-item > a {
-  color: white;
-  font-size: larger;
-  text-decoration: none;
+input {
+  @apply ring-1 ring-inset ring-black/20 dark:ring-white/10 rounded-md py-2 px-3 dark:bg-neutral-800 dark:text-white;
 }
 
-/* Menu item mouse hover */
-.menu-item > a:hover {
-  color: lightblue;
+button {
+  @apply rounded-md bg-emerald-800 hover:bg-emerald-800/70 hover:antialiased transition px-4 py-3 text-white font-medium;
 }
-
-.logo > img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid white;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
