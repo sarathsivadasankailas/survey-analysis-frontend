@@ -1,12 +1,25 @@
-<div id="main-menu">
-  <div class="logo">
-    <img src="../../../assets/images/logo.png" alt="Logo">
+<nav
+  class="h-[4rem] flex gap-4 justify-end px-6 sm:justify-around items-center border-b backdrop-blur-xl border-emerald-800/10 dark:border-emerald-600/10"
+>
+  <ul class="hidden sm:flex gap-16">
+    <li class="font-medium" *ngFor="let menuItem of navigationMenu">
+      <a
+        class="hover:opacity-60 transition hover:subpixel-antialiased tracking-tight"
+        routerLink="{{ menuItem.routerLink }}"
+        >{{ menuItem.name }}</a
+      >
+    </li>
+  </ul>
+
+  <div class="flex sm:hidden">
+    <p class="text-4xl cursor-pointer">≡</p>
+    <!-- <button
+      class="outline-none mobile-menu-button"
+      (click)="toggleMobileMenu()"
+    >
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </button> -->
   </div>
-  <nav>
-    <ul>
-      <li class="menu-item" *ngFor="let menuItem of navigationMenu">
-        <a routerLink="{{menuItem.routerLink}}">{{menuItem.name}}</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+</nav>

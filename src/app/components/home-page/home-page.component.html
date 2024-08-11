@@ -1,32 +1,68 @@
-<div class="home-background" id="home">
-  <div class="hero-text">
-    <h1>Survey Analysis</h1>
-  </div>
-  <div class="templates">
-    <div class="template-download">
-      <p>Template for Technologies Adopted</p>
-      <button class="link-btn" (click)="onDownloadTechnologiesAdopted()">Download</button>
+<div
+  class="max-w-[48rem] mx-auto flex flex-col gap-12 items-center justify-center"
+  id="home"
+>
+  <h1 class="text-6xl tracking-tight font-bold text-center">Survey Analysis</h1>
+  <!-- <img src="../../../assets/images/logo.png" alt="logo" class="w-48" /> -->
+  <div
+    class="border border-dashed border-emerald-800/30 dark:border-emerald-600/30 rounded-lg p-8 flex flex-col md:flex-row items-center justify-around text-center gap-8 w-max backdrop-blur-xl"
+  >
+    <div
+      class="flex flex-col p-4 border border-emerald-800/20 dark:border-emerald-600/20 rounded-lg w-[20rem] gap-2"
+    >
+      <p class="tracking-tight">Template for Technologies Adopted</p>
+      <button
+        class="underline underline-offset-4 p-0 text-emerald-800 dark:text-emerald-600 bg-transparent hover:bg-transparent hover:opacity-50"
+        (click)="onDownloadTechnologiesAdopted()"
+      >
+        Download
+      </button>
     </div>
-    <div class="template-download">
-      <p>Template for Learning Methods</p>
-      <button class="link-btn" (click)="onDownloadLearningMethods()">Download</button>
+    <div
+      class="flex flex-col p-4 border border-emerald-800/20 dark:border-emerald-600/20 rounded-lg w-[20rem] gap-2"
+    >
+      <p class="tracking-tight">Template for Learning Methods</p>
+      <button
+        class="underline underline-offset-4 p-0 text-emerald-800 dark:text-emerald-600 bg-transparent hover:bg-transparent hover:opacity-50"
+        (click)="onDownloadLearningMethods()"
+      >
+        Download
+      </button>
     </div>
   </div>
   <div class="file-selection-section">
     <div class="file-input-container">
-      <input type="file" id="fileInput" class="file-input" (change)="onFileSelect($event)" accept=".xlsx"/>
-      <label for="fileInput" class="file-input-label">Select a file</label>
+      <input
+        type="file"
+        id="fileInput"
+        class="hidden"
+        (change)="onFileSelect($event)"
+        accept=".xlsx"
+      />
+      <label
+        for="fileInput"
+        class="rounded-md bg-emerald-700 hover:bg-emerald-700/70 hover:antialiased transition shadow-sm px-4 py-3 text-white font-medium cursor-pointer"
+        >Select a file</label
+      >
     </div>
     <div class="file-name">
-      <label id="fileName">{{fileName}}</label>
+      <label id="fileName">{{ fileName }}</label>
     </div>
   </div>
-  <div *ngIf="uploading===false">
+  <div *ngIf="uploading === false">
     <div class="upload-btn">
-      <button *ngIf="enableUpload" (click)="uploadFile()" class="btn" [disabled]="disableUpload">{{uploadText}}</button>
+      <button
+        class="rounded-md bg-emerald-700 hover:bg-emerald-700/70 hover:antialiased transition shadow-sm px-4 py-3 text-white font-medium cursor-pointer"
+        *ngIf="enableUpload"
+        (click)="uploadFile()"
+        class="btn"
+        [disabled]="disableUpload"
+      >
+        {{ uploadText }}
+      </button>
     </div>
   </div>
-  <div *ngIf="uploading===true">
+  <div *ngIf="uploading === true">
     <app-loading text="Uploading File."></app-loading>
   </div>
 </div>
