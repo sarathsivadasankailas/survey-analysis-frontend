@@ -1,8 +1,8 @@
 .manage-caption {
   padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  text-align: center;
+  font-size: 24px;
 }
 
 .choose-options {
