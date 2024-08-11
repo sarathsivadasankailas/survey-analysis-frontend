@@ -132,7 +132,8 @@ export class LearningsDashboardComponent {
 
     const pdf = new jsPDF('landscape');
     pdf.setFontSize(16);
-    pdf.addImage(canvasImage, 'JPEG', 10, 15, 270, 140);
+    pdf.text('Learning Methods', 10, 20);
+    pdf.addImage(canvasImage, 'JPEG', 10, 25, 270, 140);
     pdf.save('Learning Methods');
 
     // Setting color back to the normal background
