@@ -13,7 +13,6 @@ export class LearningsDashboardComponent {
   semesters: any;
   selectedsemesters: any[] = [];
   labels: string[] = [];
-  //data: any[] = [];
   responseData: any;
   loading: boolean = false;
   datasets: any[] = [];
@@ -91,7 +90,6 @@ export class LearningsDashboardComponent {
     } else {
       this.selectedsemesters.push(semester);
     }
-    //console.log('Selected Semesters', this.selectedsemesters);
 
     this.updateGraphData();
     this.chart.update();
