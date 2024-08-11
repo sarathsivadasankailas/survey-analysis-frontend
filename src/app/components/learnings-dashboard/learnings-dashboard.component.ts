@@ -13,20 +13,37 @@ export class LearningsDashboardComponent {
   semesters: any;
   selectedsemesters: any[] = [];
   labels: string[] = [];
-  data: any[] = [];
+  //data: any[] = [];
   responseData: any;
   loading: boolean = false;
+  datasets: any[] = [];
+
+  colors:any = [
+    "rgba(54, 162, 235, 0.7)",
+    "rgba(75, 192, 192, 0.7)",
+    "rgba(255, 206, 86, 0.7)",
+    "rgba(255, 159, 64, 0.7)",
+    "rgba(153, 102, 255, 0.7)",
+    "rgba(255, 99, 132, 0.7)",
+    "rgba(75, 192, 75, 0.7)",
+    "rgba(33, 102, 172, 0.7)",
+    "rgba(200, 200, 200, 0.7)",
+    "rgba(255, 105, 180, 0.7)",
+    "rgba(34, 139, 34, 0.7)",
+    "rgba(255, 215, 0, 0.7)",
+    "rgba(255, 127, 80, 0.7)",
+    "rgba(135, 206, 235, 0.7)",
+    "rgba(255, 0, 255, 0.7)",
+    "rgba(128, 128, 0, 0.7)",
+    "rgba(165, 42, 42, 0.7)",
+    "rgba(220, 20, 60, 0.7)",
+    "rgba(144, 238, 144, 0.7)",
+    "rgba(0, 255, 255, 0.7)"
+  ]
 
   learningMethodsData = {
     labels:this.labels,
-    datasets: [
-      {
-        label: "Select Semeters",
-        data: this.data,
-        backgroundColor: "rgba(0,0,255)",
-        barThickness: 25
-      }
-    ]
+    datasets: this.datasets
   }
 
   constructor(private backendSvc: BackendCommunicationService) {}
@@ -54,30 +71,28 @@ export class LearningsDashboardComponent {
       type: "bar",
       data: this.learningMethodsData,
       options: {
-        indexAxis: 'y'
+        indexAxis: 'y',
+        scales: {
+          x: {
+            stacked: true
+          },
+          y: {
+            stacked: true
+          }
+        }
       }
     });
   }
 
   onSelectionChange(semester:any) {
-    console.log(semester)
+    console.log('Click', semester)
     if (this.selectedsemesters.includes(semester)) {
       this.selectedsemesters = this.selectedsemesters.filter(item => item != semester);
     } else {
       this.selectedsemesters.push(semester);
     }
-    console.log(this.selectedsemesters);
-    let graphLabel = '';
-    this.selectedsemesters.forEach((semester:any) => {
-      graphLabel += " " + semester?.name + "-" + semester?.semester + "-" + semester?.year + ",";
-    });
-    if (graphLabel.charAt(graphLabel.length - 1) === ',') {
-      graphLabel = graphLabel.slice(0, graphLabel.lastIndexOf(','));
-    }
-    if (graphLabel.trim() === '') {
-      graphLabel = 'Select Semesters'
-    }
-    this.learningMethodsData.datasets[0].label = graphLabel;
+    //console.log('Selected Semesters', this.selectedsemesters);
+
     this.updateGraphData();
     this.chart.update();
   }
@@ -91,30 +106,47 @@ export class LearningsDashboardComponent {
   }
 
   updateGraphData() {
+    // Clearing the dataset
+    this.learningMethodsData.datasets = [];
+    for (let i = 0; i < this.semesters.length; i++) {
+      let semester = this.semesters[i];
+      if (!this.selectedsemesters.includes(semester)) {
+        continue;
+      }
+      console.log('Processing data for ', semester, this.responseData);
+      let semesterDetails = this.responseData.find((item:any) => semester.id === item._id);
+      console.log('Semester Details', semesterDetails);
+      let graphData = {
+        label: this.getSemesterName(semesterDetails),
+        data: this.getSemesterData(semesterDetails),
+        backgroundColor: this.colors[i],
+        barThickness: 20
+      }
+
+      this.learningMethodsData.datasets.push(graphData);
+    }
+  }
+
+  getSemesterName(semesterDetails:any) {
+    return `${semesterDetails?.semester}-${semesterDetails?.name}-${semesterDetails?.year}`;
+  }
+
+  getSemesterData(semesterDetails:any) {
+    let graphData = [];
     let size = this.learningMethodsData.labels.length;
     for (let i = 0; i < size; i++) {
-      this.data[i] = 0;
+      graphData[i] = 0;
     }
-    let semesterData:any = [];
-    this.selectedsemesters.forEach((semester:any) => {
-      let res = this.responseData.find((item:any) =>
-        item.name == semester.name &&
-        item.year == semester.year &&
-        item.semester == semester.semester
-      );
-      semesterData.push(res);
-    });
-    semesterData.forEach((item:any) => {
-      item?.methods.forEach((method:any) => {
+    semesterDetails?.methods.forEach((method:any) => {
         let index = this.learningMethodsData.labels.indexOf(method.method);
         let scores = method?.scores;
         let totalScores = 0;
         for (let i=0; i< scores.length; i++) {
           totalScores  = totalScores + ((i+1)*scores[i]);
         }
-        this.data[index] += totalScores;
+        graphData[index] = totalScores;
       });
-    });
+      return graphData;
   }
 
   downloadPDF() {

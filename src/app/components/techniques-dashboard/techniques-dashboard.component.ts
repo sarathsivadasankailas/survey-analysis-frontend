@@ -23,7 +23,7 @@ export class TechniquesDashboardComponent {
       {
         label: "Select Semeters",
         data: this.data,
-        backgroundColor: "rgba(0,0,255)",
+        backgroundColor: "rgba(54, 162, 235, 0.7)",
         barThickness: 20
       }
     ]
