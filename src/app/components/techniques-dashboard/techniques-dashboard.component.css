@@ -1,8 +1,14 @@
 .techniques-adopted-caption {
   padding: 5px 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-caption {
+  text-align: center;
+  font-size: 24px;
 }
 
 .techniques-adopted-page {
@@ -17,6 +23,7 @@
 .download-graph {
   padding-right: 25px;
   padding-left: 10px;
+  text-align: right;
 }
 
 /* .download-graph button {
