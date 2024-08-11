@@ -52,6 +52,7 @@
   <div *ngIf="uploading === false">
     <div class="upload-btn">
       <button
+        class="rounded-md bg-emerald-700 hover:bg-emerald-700/70 hover:antialiased transition shadow-sm px-4 py-3 text-white font-medium cursor-pointer"
         *ngIf="enableUpload"
         (click)="uploadFile()"
         class="btn"
