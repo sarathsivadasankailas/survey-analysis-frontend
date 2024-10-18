@@ -77,6 +77,9 @@ export class TechniquesDashboardComponent {
             stacked: true,
             beginAtZero: true,
             ticks: {
+              font: {
+                size: 14  // Increase font size
+              },
               callback: (value, index, values) => {
                 console.log(value, index, values)
                 return `${value}%`;
@@ -84,7 +87,12 @@ export class TechniquesDashboardComponent {
             }
           },
           y: {
-            stacked: true
+            stacked: true,
+            ticks: {
+              font: {
+                  size: 14  // Increase font size
+              }
+            }
           }
         }
       }
