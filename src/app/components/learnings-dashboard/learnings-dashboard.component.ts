@@ -73,10 +73,20 @@ export class LearningsDashboardComponent {
         indexAxis: 'y',
         scales: {
           x: {
-            stacked: true
+            stacked: true,
+            ticks: {
+              font: {
+                  size: 14  // Increase font size
+              }
+            }
           },
           y: {
-            stacked: true
+            stacked: true,
+            ticks: {
+              font: {
+                  size: 14  // Increase font size
+              }
+            }
           }
         }
       }
